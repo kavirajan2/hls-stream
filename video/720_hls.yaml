@@ -1,3 +1,4 @@
+    
 label: HLS (Single Bitrate)
 
 inputs:
@@ -11,8 +12,13 @@ inputs:
     type: string
     required: true
     
-tasks:                      
-  - label: Generate 720p HLS stream
+tasks:       
+
+  - type: parallel
+    label: Generate the HLS streams
+    tasks:            
+    
+    - label: Generate 720p HLS stream
       type: ffmpeg
       options: [
         -y, 
@@ -34,4 +40,3 @@ tasks:
         -hls_playlist_type,vod,
         -hls_segment_filename,"${output}/720p_%03d.ts","${output}/720p.m3u8"
       ]
-    
