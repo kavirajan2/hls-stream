@@ -11,10 +11,15 @@ inputs:
     type: string
     required: true
     
-tasks:                      
-  - label: Generate 360p HLS stream
-    type: ffmpeg
-    options: [
+tasks:       
+
+  - type: parallel
+    label: Generate the HLS streams
+    tasks:            
+    
+    - label: Generate 360p HLS stream
+      type: ffmpeg
+      options: [
         -y, 
         -i, "${input}",
         -vf,"scale=w=-2:h=360",
