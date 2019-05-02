@@ -11,8 +11,13 @@ inputs:
     type: string
     required: true
     
-tasks:                      
-  - label: Generate 480p HLS stream
+tasks:       
+
+  - type: parallel
+    label: Generate the HLS streams
+    tasks:            
+    
+    - label: Generate 480p HLS stream
       type: ffmpeg
       options: [
         -y, 
