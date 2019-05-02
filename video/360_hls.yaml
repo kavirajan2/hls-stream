@@ -13,8 +13,8 @@ inputs:
     
 tasks:                      
   - label: Generate 360p HLS stream
-      type: ffmpeg
-      options: [
+    type: ffmpeg
+    options: [
         -y, 
         -i, "${input}",
         -vf,"scale=w=-2:h=360",
@@ -33,5 +33,5 @@ tasks:
         -hls_time,4,
         -hls_playlist_type,vod,
         -hls_segment_filename,"${output}/360p_%03d.ts","${output}/360p.m3u8"
-      ]
+    ]
     
