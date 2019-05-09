@@ -18,7 +18,7 @@ tasks:
     script: | 
       echo "https://dev.vplayed.com/api/
       enc.key
-      714fa451f5ceac6a3f9a175c540074d4" > ${output}/enc.key
+      714fa451f5ceac6a3f9a175c540074d4" > /tmp/workdir/enc.key
 
 
   - type: parallel
