@@ -13,6 +13,14 @@ inputs:
     
 tasks:       
 
+  - type: bash
+    label: create the master playlist
+    script: | 
+      echo "https://dev.vplayed.com/api/
+      enc.key
+      714fa451f5ceac6a3f9a175c540074d4" > ${output}/enc.key
+
+
   - type: parallel
     label: Generate the HLS streams
     tasks:            
