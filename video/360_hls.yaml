@@ -36,7 +36,7 @@ tasks:
         -maxrate,856k,
         -bufsize,1200k,
         -hls_time,4,
-        -hls_key_info_file,"${input}/enc.key",
+        -hls_key_info_file,"/videos/enc.key",
         -hls_playlist_type,vod,
         -hls_segment_filename,"${output}/360p_%03d.ts","${output}/360p.m3u8"
     ]
