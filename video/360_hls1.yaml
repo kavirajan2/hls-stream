@@ -16,9 +16,10 @@ tasks:
   - type: bash
     label: create the master playlist
     script: | 
+      KEY="$(openssl rand -hex 16)"
       echo "https://demo.vplayed.com/api/v1
       /videos/enc.key
-      openssl rand -hex 16 | awk '{print $1}'" > /videos/enc.key
+      ${KEY}" > /videos/enc.key
 
   - type: parallel
     label: Generate the HLS streams
