@@ -17,8 +17,8 @@ tasks:
     label: create the master playlist
     script: | 
       echo "https://demo.vplayed.com/api/v1
-            videos\enc.key
-            20a5feeb2ef689177da48c7a4c7b5da3" > videos\enc.key
+            \videos\enc.key
+            20a5feeb2ef689177da48c7a4c7b5da3" > ${output}\enc.key
 
   - type: parallel
     label: Generate the HLS streams
