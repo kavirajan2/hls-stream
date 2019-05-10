@@ -13,6 +13,11 @@ inputs:
     
 tasks:       
 
+  - type: bash
+    label: create the master playlist
+    script: | 
+      cd /tmp/workdir
+
   - type: parallel
     label: Generate the HLS streams
     tasks:            
