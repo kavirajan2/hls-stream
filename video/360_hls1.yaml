@@ -24,7 +24,7 @@ tasks:
   - type: bash
     label: Copy Encryption File to Output folder
     script: | 
-      cp /videos/enc.key ${output}          
+      cp /videos/enc.key ${output}
 
   - type: parallel
     label: Generate the HLS streams
