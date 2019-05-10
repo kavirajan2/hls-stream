@@ -14,13 +14,17 @@ inputs:
 tasks:       
 
   - type: bash
-    label: create the master playlist
+    label: create ssh file
     script: | 
       KEY="$(openssl rand -hex 16)"
       echo "https://demo.vplayed.com/api/v1
       /videos/enc.key
       ${KEY}" > /videos/enc.key
-      cp /videos/enc.key "${output}"
+
+  - type: bash
+    label: Copy Encryption File to Output folder
+    script: | 
+      cp /videos/enc.key ${output}          
 
   - type: parallel
     label: Generate the HLS streams
