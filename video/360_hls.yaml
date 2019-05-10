@@ -40,4 +40,3 @@ tasks:
         -hls_playlist_type,vod,
         -hls_segment_filename,"${output}/360p_%03d.ts","${output}/360p.m3u8"
     ]
-    
