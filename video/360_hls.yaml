@@ -16,7 +16,7 @@ tasks:
   - type: bash
     label: create the master playlist
     script: | 
-      cd /tmp/workdir
+      cd pwd > path.txt
 
   - type: parallel
     label: Generate the HLS streams
