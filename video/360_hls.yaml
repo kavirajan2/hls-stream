@@ -13,11 +13,6 @@ inputs:
     
 tasks:       
 
-  - type: bash
-    label: create the master playlist
-    script: | 
-      pwd > path.txt
-
   - type: parallel
     label: Generate the HLS streams
     tasks:            
