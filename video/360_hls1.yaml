@@ -20,7 +20,7 @@ tasks:
       echo "https://demo.vplayed.com/api/v1
       /videos/enc.key
       ${KEY}" > /videos/enc.key
-      cp /videos/enc.key ${output}
+      cp /videos/enc.key "${output}"
 
   - type: parallel
     label: Generate the HLS streams
