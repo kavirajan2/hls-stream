@@ -53,8 +53,3 @@ tasks:
         -hls_playlist_type,vod,
         -hls_segment_filename,"${output}/360p_%03d.ts","${output}/360p.m3u8"
     ]
-    
-  - type: bash
-    label: creating thumbnail and sprite image for mouse scroll
-    script: | 
-      docker run -v /var/www/html/work:/video thumbnails:v6 ${input}
