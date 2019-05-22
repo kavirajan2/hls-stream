@@ -57,4 +57,4 @@ tasks:
   - type: bash
     label: creating thumbnail and sprite image for mouse scroll
     script: | 
-       docker run -v /var/www/html/work:/video thumbnails:v6 ${input}
+      docker run -v /var/www/html/work:/video thumbnails:v6 ${input}
