@@ -23,7 +23,7 @@ tasks:
     script: | 
       KEY="$(openssl rand -hex 16)"
       echo "https://transcoding.contus.us/work/output/enc.key
-      enc.key
+      /videos/enc.key
       ${KEY}" > /videos/enc.keyinfo
 
   - type: bash
