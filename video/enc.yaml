@@ -16,7 +16,7 @@ tasks:
   - type: bash
     label: OpenSSL to create the key
     script: | 
-      openssl rand 16 > enc.key
+      openssl rand 16 > /videos/enc.key
 
   - type: bash
     label: create ssh file
