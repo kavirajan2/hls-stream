@@ -30,7 +30,32 @@ tasks:
       cp /videos/enc.key /videos/enc.keyinfo ${output}
   - type: parallel
     label: Generate the HLS streams
-    tasks:            
+    tasks:   
+    
+    
+    - label: Generate 240p HLS stream
+      type: ffmpeg
+      options: [
+        -y,
+        -i, "${input}",
+        -vf,"scale=w=426:h=240",
+        "-c:a", aac,
+        "-ar","48000",
+        "-b:a","64k",
+        "-c:v","h264",
+        "-profile:v",main,
+        -crf,20,
+        -g,48,
+        -keyint_min,48,
+        -sc_threshold,0,
+        "-b:v",400k,
+        -maxrate,600k,
+        -bufsize,800k,
+        -hls_time,4,
+        -hls_key_info_file, "/videos/enc.keyinfo",
+        -hls_playlist_type,vod,
+        -hls_segment_filename,"${output}/240p_%03d.ts","${output}/240p.m3u8"
+      ]
     
     - label: Generate 360p HLS stream
       type: ffmpeg
@@ -133,6 +158,8 @@ tasks:
     script: | 
       echo "#EXTM3U
             #EXT-X-VERSION:3
+            #EXT-X-STREAM-INF:BANDWIDTH=638000,RESOLUTION=426x240
+            240p.m3u8
             #EXT-X-STREAM-INF:BANDWIDTH=800000,RESOLUTION=640x360
             360p.m3u8
             #EXT-X-STREAM-INF:BANDWIDTH=1400000,RESOLUTION=842x480
