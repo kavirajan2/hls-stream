@@ -6,6 +6,10 @@ inputs:
     type: string
     required: true
     
+  - name: input
+    label: Input File
+    type: string
+    required: true    
     
 tasks:       
 
@@ -13,3 +17,30 @@ tasks:
     label: Create new directory
     script: | 
       mkdir ${dir}
+
+  - type: parallel
+    label: Generate the HLS streams
+    tasks:   
+    
+    - label: Generate 240p HLS stream
+      type: ffmpeg
+      options: [
+        -y, 
+        -i, "${input}",
+        -vf,"scale=w=426:h=240",
+        "-c:a", aac,
+        "-ar","48000",
+        "-b:a","64k", 
+        "-c:v","h264",
+        "-profile:v",main,
+        -crf,20,
+        -g,48,
+        -keyint_min,48,
+        -sc_threshold,0, 
+        "-b:v",400k,
+        -maxrate,600k,
+        -bufsize,800k,
+        -hls_time,4,
+        -hls_playlist_type,vod,
+        -hls_segment_filename,"${dir}/240p_%03d.ts","${dir}/240p.m3u8"
+      ]
