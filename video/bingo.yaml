@@ -46,7 +46,11 @@ tasks:
       ]
 
   - type: bash
-    label: Create thumbanails for Videos
+    label: Go inside video output folder
     script: | 
       cd ${dir}
+
+  - type: bash
+    label: Create thumbanails for Videos
+    script: | 
       docker run -v /var/www/html/work/:/video kavirajan/thumbnail:v2 ${input}
