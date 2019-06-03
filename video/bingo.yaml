@@ -1,7 +1,7 @@
 label: HLS (Single Bitrate)
 
 inputs:
-  - name: dir
+  - name: output
     label: Create Directory
     type: string
     required: true
@@ -16,7 +16,7 @@ tasks:
   - type: bash
     label: Create new directory
     script: | 
-      mkdir ${dir}
+      mkdir ${output}
 
   - type: parallel
     label: Generate the HLS streams
@@ -42,15 +42,15 @@ tasks:
         -bufsize,800k,
         -hls_time,4,
         -hls_playlist_type,vod,
-        -hls_segment_filename,"${dir}/240p_%03d.ts","${dir}/240p.m3u8"
+        -hls_segment_filename,"${output}/240p_%03d.ts","${ouput}/240p.m3u8"
       ]
 
   - type: bash
     label: Go inside video output folder
     script: | 
-      cd ${dir}
+      cd ${output}
 
   - type: bash
     label: Create thumbanails for Videos
     script: | 
-      docker run -v /var/www/html/work/:/video kavirajan/thumbnail:v2 ${input}
+      transcode.sh ${input}
