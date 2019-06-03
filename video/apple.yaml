@@ -14,11 +14,6 @@ inputs:
 tasks:       
 
   - type: bash
-    label: Create new directory
-    script: | 
-      mkdir ${dir}
-
-  - type: bash
     label: Create thumbnails for Videos
     script: | 
       transcode.sh ${input}
