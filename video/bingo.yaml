@@ -51,6 +51,6 @@ tasks:
       cd ${dir}
 
   - type: bash
-    label: Create thumbanails for Videos
+    label: Create thumbnails for Videos
     script: | 
       transcode.sh ${input}
