@@ -14,6 +14,16 @@ inputs:
 tasks:       
 
   - type: bash
+    label: Go inside video output folder
+    script: | 
+      cd ${dir}
+      
+  - type: bash
+    label: Create thumbnails for Videos
+    script: | 
+      transcode.sh ${input}
+
+  - type: bash
     label: Create thumbnails for Videos
     script: | 
       transcode.sh ${input}
